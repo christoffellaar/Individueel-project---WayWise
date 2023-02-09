@@ -105,18 +105,21 @@ nav > a {
 }
 
 /* For main sections to fix overflow scroll h3 (home, community) */
-section:has(h3) {
+h2 + section {
 	overflow: scroll;
   }
 
-  section figure:first-of-type {
-	margin-top: 60px;
+section figure {
+	margin-top: 20px;
   }
 
+section > h3 + a > figure {
+	margin-top: 60px;
+}
 /* For main sections to fix overflow scroll h3 (profile) */
 
 h3 + img {
-	margin-top: 40px;
+	margin-top: 100px;
 }
 
 /* nav */
@@ -165,6 +168,13 @@ main > h2 + a {
 	justify-content: space-around;
 }
 
+.centerindividual {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
 /* header > h1  + main > h2 + a {
 	margin-left: auto;
     margin-right: auto;
@@ -223,10 +233,15 @@ main > section {
 }
 	/* Cards */
 section:nth-child(2) {
-	padding-bottom: 10%;
+	padding-bottom: 5%;
 }
 
-h3 + figure, figure + figure {
+section > h3 + a, a + a {
+	text-decoration: none;
+	color: black;
+	font-size: 0.9em;
+}
+a > figure {
 	box-shadow: 2px 2px 4px #000000;
 	margin: 5%;
 	padding: 1%;
@@ -236,16 +251,13 @@ h3 + figure, figure + figure {
 	align-items: center;
 }
 
-figure section {
+a > figure section {
 	margin: 0;
 }
 
-section img {
+a > figure > section + img {
  padding-right: 10px;
-}
-
-figure section p {
-	font-size: 0.9em;
+ width: 60px;
 }
 
 /* TASK OVERVIEW */
@@ -263,7 +275,18 @@ ol > li, h4~h5 {
 	flex-grow: 1;
 	padding: 10px;
   }
+
+  ol > li > label > a {
+	color: black;
+ 	text-decoration: none;
+}
   
+ol > li > label:hover {
+	color: black;
+ 	text-decoration: none;
+	border: 5px white solid;
+}
+
   ol > li > a, h4~h5 > a  {
 	margin-left: auto;
   }
@@ -278,7 +301,63 @@ ol > li, h4~h5 {
 	width: 30px;
 	padding: 0px;
   }
+
+  body > a {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	z-index: 50;
+  }
+
+  /* Task pop-up cards */
+
+  ol > li > article {
+	width: 300px;
+	background: white;
+	margin-top: 100px;
+	margin-left: 40px;
+	position: fixed;
+	box-shadow: 1px 3px 4px  #000000;
+	z-index: 100;
+  }
   
+  ol > li > article > :first-child {
+	font-family:'Poppins', Helvetica, Arial;
+	font-weight: 500;
+	color: white;
+	border:rgb(112, 112, 228) 8px solid;
+	background-color: rgb(112, 112, 228);
+	padding-left: 5px;
+  }
+
+  ol > li > article p:nth-of-type(2),
+  ol > li > article p:nth-of-type(3),
+  ol > li > article p:nth-of-type(4),
+  ol > li > article > ol {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+ol > li > article p:nth-of-type(3) {
+	margin-bottom: 20px;
+}
+
+ol > li > article > ol > li {
+	margin-bottom: 10px;
+}
+
+article p:nth-of-type(2), article p:nth-of-type(4) {
+font-family:'Poppins', Helvetica, Arial;	
+font-size: 1.5em;
+font-weight: 700; /* bold */
+color: black;
+font-size: 1.2em;
+}
+
+h4 + ol > li > label :hover {
+	border: 5px solid white;
+}
+
   /* to fix overflow scroll */
 section > h3 + h4{
 	margin-top: 60px;
@@ -289,47 +368,63 @@ h4 + ol, ol + h5 {
 }
 
   /* COMMUNITY */
+section > h3 + figure {
+	margin-top: 60px !important;
+}
 
-  figure:has(article) {
+    h1 + h2 + section > h3 + figure, figure + figure{
+	margin: 5%;
 	border-bottom: 0.5px solid black;
-	display: flex;
-	box-shadow: none;
 
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-start;
-	align-content: flex-start;
+	align-items: center;
+	align-content: center;
   }
 
- article:has(h4) {
-	width: 50%;
+  h1 + h2 + section > h3 + figure > figcaption, figure + figure > figcaption {
 	display: flex;
-  	flex-direction: column;
+	flex-direction: column;
+	justify-content: center;
 	align-items: flex-start;
-	align-content: flex-start;
   }
 
-figure > figcaption > a {
+  figcaption p:first-of-type{
+	font-family:'Poppins', Helvetica, Arial;	
+	font-size: 1.5em;
+	font-weight: 700; /* bold */
+	color: black;
+	font-size: 0.8em;
+  }
+
+
+  figure > figure {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0px;
+  }
+
+
+  figure > figure > img + a {
 	color: grey;
 	font-size: 0.7em;
 	font-family: 'Helvetica Neue', sans-serif, Arial;
-  }
-
-
-figure > figure {
-	display: flex;
-	box-shadow: none;
-	margin-top: 0px !important;
-
-
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-  }
+	padding: 5px;
+	}
 
   figure > figure >img {
 	height: 70px;
 	width: 100px;
+	}
+
+	figure > figcaption :nth-child(2) {
+		font-size: 0.8em;
+		}
+
+	figure > figcaption :nth-child(3) {
+				font-size: 0.8em;
 	}
 
 
